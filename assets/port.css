@@ -118,7 +118,7 @@ nav.scrolled {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 0 10%;
@@ -141,7 +141,7 @@ nav.scrolled {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
     opacity: 0;
@@ -238,7 +238,7 @@ nav.scrolled {
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     margin-top: 1rem;
     opacity: 0;
     transform: translateY(30px);
@@ -273,7 +273,7 @@ nav.scrolled {
 }
 
 .about-text h3 {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
     margin-bottom: 1.5rem;
     color: var(--accent);
 }
@@ -330,7 +330,7 @@ nav.scrolled {
 }
 
 .skills-title {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin-bottom: 1.5rem;
     color: var(--accent);
 }
@@ -413,7 +413,7 @@ nav.scrolled {
 }
 
 .project-title {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin-bottom: 0.5rem;
 }
 
@@ -464,7 +464,7 @@ nav.scrolled {
 }
 
 .contact-info h3 {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
     margin-bottom: 1.5rem;
     color: var(--accent);
 }
@@ -590,13 +590,17 @@ footer {
     }
     to {
         opacity: 1;
-        /* transform: rotateX(180'angle'); */
-        /* transform: rotate('180'); */
-        transform: translateX(00px);
+        transform: translateX(0);
     }
 }
 
-/* Responsive */
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-image {
+        height: 70%;
+    }
+}
+
 @media (max-width: 992px) {
     .about-content {
         flex-direction: column;
@@ -604,6 +608,21 @@ footer {
     
     .contact-container {
         grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .hero-image {
+        height: 60%;
+    }
+    
+    .about-image, .about-text {
+        transform: none;
+        opacity: 1;
+        width: 100%;
+    }
+    
+    .about-text {
+        margin-top: 3rem;
     }
 }
 
@@ -646,18 +665,23 @@ footer {
         flex-direction: column;
         text-align: center;
         padding-top: 8rem;
+        padding-bottom: 4rem;
     }
 
     .hero-content {
         margin-bottom: 3rem;
+        max-width: 100%;
     }
 
     .hero-image {
         position: relative;
         right: auto;
         height: auto;
-        max-width: 75%;
+        max-width: 100%;
         margin-top: 2rem;
+        transform: none;
+        animation: none;
+        opacity: 1;
     }
 
     .social-links {
@@ -673,28 +697,90 @@ footer {
     .skills-container {
         grid-template-columns: 1fr;
     }
-    .about-image{
+    
+    .about-image {
         position: relative;
         right: auto;
         height: auto;
-        max-width: 75%;
+        max-width: 100%;
         margin-top: 2rem;
     }
-}
-/* 
-@media (max-width: 400px) {
-    .hero-image {
-        position: relative;
-        right: auto;
-        height: auto;
-        max-width: 50%;
-        margin-top: 1rem;
+    
+    .section-header {
+        margin-bottom: 3rem;
     }
-    .about {
-        padding: 8rem 55%;
-        background: rgba(10, 10, 10, 0.7);
-        backdrop-filter: blur(10px);
-        position: relative;
+}
+
+@media (max-width: 576px) {
+    nav {
+        padding: 1.5rem 1.5rem;
     }
     
-} */
+    nav.scrolled {
+        padding: 1rem 1.5rem;
+    }
+    
+    .hero {
+        padding: 8rem 1.5rem 4rem;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-btn {
+        padding: 0.8rem 2rem;
+    }
+    
+    .about, .skills, .projects, .contact {
+        padding: 5rem 1.5rem;
+    }
+    
+    .about-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-links {
+        flex-direction: column;
+    }
+    
+    .project-link {
+        text-align: center;
+    }
+    
+    .form-group input, 
+    .form-group textarea {
+        padding: 0.7rem 0.9rem;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        padding: 0.8rem;
+    }
+    
+    footer {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
